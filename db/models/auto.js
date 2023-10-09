@@ -6,6 +6,23 @@ const AutoSchema = {
 	id: {
 		type: DataTypes.INTEGER,
 		primaryKey: true
+	},
+	placas: {
+		type: DataTypes.STRING,
+		unique: true
+	},
+	marca: {
+		type: DataTypes.STRING,
+	},
+	año: {
+		type: DataTypes.STRING
+	},
+	modelo: {
+		type: DataTypes.STRING,
+	},
+	idUsuario: {
+		type: DataTypes.STRING,
+		allowNull: false
 	}
 }
 

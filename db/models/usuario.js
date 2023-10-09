@@ -1,18 +1,18 @@
-const {Sequelize, DataTypes, Model} = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
 const USUARIO_TABLE = 'usuario';
 
 const UsuarioSchema = {
-	id : {
-		type : DataTypes.INTEGER,
+	id: {
+		type: DataTypes.INTEGER,
 		autoIncrement: true,
 		primaryKey: true,
 		allowNull: false,
 		unique: true
 	},
 	nombre: {
-		type : DataTypes.STRING,
-		allowNull: false,		
+		type: DataTypes.STRING,
+		allowNull: false,
 	},
 	apellido: {
 		type: DataTypes.STRING,
@@ -29,9 +29,9 @@ const UsuarioSchema = {
 }
 
 class Usuario extends Model {
-	static associate(models) {	}
+	static associate(models) { }
 
-	static config(sequelize){
+	static config(sequelize) {
 		return {
 			sequelize,
 			tableName: USUARIO_TABLE,
@@ -41,4 +41,4 @@ class Usuario extends Model {
 	}
 }
 
-module.exports = { Usuario, UsuarioSchema, USUARIO_TABLE};
+module.exports = { Usuario, UsuarioSchema, USUARIO_TABLE };
