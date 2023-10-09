@@ -10,7 +10,7 @@ const routerApi = require('./routes/index.js');
 
 app.use(body_parser.json());
 
-/* const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://localhost:3000"];
 const options = () => {
 	origin: (origin, callback) => {
 		if (whitelist.includes(origin) || !origin) {
@@ -21,7 +21,7 @@ const options = () => {
 	}
 }
 
-app.use(cors(options));*/
+app.use(cors(options));
 
 routerApi(app);
 
