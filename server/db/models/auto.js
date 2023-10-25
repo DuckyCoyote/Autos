@@ -5,7 +5,9 @@ const AUTO_TABLE = 'auto';
 const AutoSchema = {
 	id: {
 		type: DataTypes.INTEGER,
-		primaryKey: true
+		primaryKey: true,
+		unique: true,
+		autoIncrement: true
 	},
 	placas: {
 		type: DataTypes.STRING,
@@ -20,14 +22,12 @@ const AutoSchema = {
 	modelo: {
 		type: DataTypes.STRING,
 	},
-	idUsuario: {
-		type: DataTypes.STRING,
-		allowNull: false
-	}
 }
 
 class Auto extends Model {
-	static associate(models) { }
+	static associate(models) {
+		this.hasMany(models.Servicio, { foreignKey: 'idAuto', as: 'Auto' })
+	}
 
 	static config(sequelize) {
 		return {
