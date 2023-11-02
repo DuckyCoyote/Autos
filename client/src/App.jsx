@@ -1,4 +1,5 @@
 import axios from "axios";
+import Header from "./components/Header.component.jsx";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -14,8 +15,9 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <table className="table">
+    <div>
+      <Header />
+      <table className="table container">
         <thead>
           <tr>
             <th>id</th>
