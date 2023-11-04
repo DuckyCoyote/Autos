@@ -40,8 +40,9 @@ block content
       label(for='descripcion') Descripcion
       input#marca(type='text' name='descripcion')
       br
-      label(for='idAuto') Id Auto
-      input#modelo(type='number' name='idAuto')
+      select.form-select(aria-label="Seleccione un Auto" name="idAuto")
+        each auto in autos
+          option(value=`${auto.id}`) #{auto.placas}
       br
       label(for='fecha') Fecha
       input#ano(type='date' name='fecha')
@@ -70,14 +71,14 @@ block content
       tr
         th ID
         th Descripci&oacute;n
-        th ID_auto
+        th Auto
         th Fecha
     tbody.table-db
       each service in services 
         tr 
           td #{service.id}
           td #{service.descripcion}
-          td #{service.idAuto}
+          td #{service.Auto.placas}
           td #{service.fecha}
   // tabla
   table.table-autos

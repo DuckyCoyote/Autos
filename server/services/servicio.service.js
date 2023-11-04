@@ -3,7 +3,15 @@ const {models} = require('../db/sequelize.js');
 
 class ServicioService {
 	async findAll(){
-		const servicio = await models.Servicio.findAll();
+		const servicio = await models.Servicio.findAll({
+			include: [
+        {
+          association: "Auto",
+          attributes: ["placas"]
+        } 
+      ],
+      order: [['fecha', 'DESC']],
+    });
 		return servicio;
 	}
 
