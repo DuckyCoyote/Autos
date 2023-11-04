@@ -1,0 +1,14 @@
+extends ./layout/header.pug
+block content
+  .container
+    h2 Formulario de Registro
+    form(action='#' method='post')
+      label(for='id') ID:
+      input#id(type='text' name='id' required='')
+      label(for='nombre') Nombre:
+      input#nombre(type='text' name='nombre' required='')
+      label(for='apellido') Apellido:
+      input#apellido(type='text' name='apellido' required='')
+      label(for='correo') Correo Electr&oacute;nico:
+      input#correo(type='email' name='correo' required='')
+      input(type='submit' value='Registrar')

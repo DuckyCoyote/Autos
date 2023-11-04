@@ -1,0 +1,98 @@
+extends ./layout/header.pug
+block content
+  // formulario
+  .contenedor
+    h1 Agregar Auto
+    form.form-autos
+      label(for='marca') Marca:
+      input#marca(type='text' name='marca')
+      br
+      label(for='Modelo') Modelo:
+      input#modelo(type='text' name='modelo')
+      br
+      label(for='Ano') A&ntilde;o:
+      input#ano(type='text' name='año')
+      br
+      label(for='Placas') Placas:
+      input#Placas(type='text' name='placas')
+      br
+      button.btn.btn-primary.mt-2(type='submit') Guardar
+    script.
+      const formAutos = document.querySelector(".form-autos");
+      document.addEventListener("DOMContentLoaded", () => {
+      formAutos.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(formAutos);
+        const data = Object.fromEntries(formData);
+        await fetch("http://localhost:3000/autos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+      formAutos.reset();
+      location.reload();
+        });
+      });
+    h1 Agendar servicio
+    form.form-servicios
+      label(for='descripcion') Descripcion
+      input#marca(type='text' name='descripcion')
+      br
+      label(for='idAuto') Id Auto
+      input#modelo(type='number' name='idAuto')
+      br
+      label(for='fecha') Fecha
+      input#ano(type='date' name='fecha')
+      button.btn.btn-primary.mt-2(type='submit') Guardar
+    script.
+      const formServicios = document.querySelector(".form-servicios");
+      document.addEventListener("DOMContentLoaded", () => {
+      formServicios.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formDataServicios = new FormData(formServicios);
+        const dataServicios = Object.fromEntries(formDataServicios);
+        await fetch("http://localhost:3000/servicio", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataServicios),
+        });
+        formServicios.reset();
+        location.reload();
+        });
+      });      
+  // tabla
+  table.table-descripcion
+    thead
+      tr
+        th ID
+        th Descripci&oacute;n
+        th ID_auto
+        th Fecha
+    tbody.table-db
+      each service in services 
+        tr 
+          td #{service.id}
+          td #{service.descripcion}
+          td #{service.idAuto}
+          td #{service.fecha}
+  // tabla
+  table.table-autos
+    thead
+      tr
+        th ID
+        th Placas
+        th Marca
+        th A&ntilde;o
+        th Modelo
+    tbody.table-dba
+      each auto in autos
+        tr 
+          td #{auto.id}
+          td #{auto.placas}
+          td #{auto.marca}
+          td #{auto.año}
+          td #{auto.modelo}

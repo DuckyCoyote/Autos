@@ -1,15 +1,21 @@
 const express = require("express");
-
 const router = express.Router();
 
 const AutoService = require("../services/auto.service.js");
+const ServicioService = require('../services/servicio.service.js');
 
-const service = new AutoService();
+const serviceService = new ServicioService();
+
+const serviceAuto = new AutoService();
 
 router.get("/", async (req, res, next) => {
 	try {
-		const autos = await service.findAll();
-		res.json(autos);
+		const services = await serviceService.findAll();
+		const autos = await serviceAuto.findAll();
+		res.render('autos', {
+			autos,
+			services
+		})
 	} catch (error) {
 		console.log(error);
 	}
@@ -18,7 +24,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
 	try {
 		const id = parseInt(req.params.id);
-		const auto = await service.findOne(id);
+		const auto = await serviceAuto.findOne(id);
 		res.json(auto);
 	} catch (error) {
 		console.log(error);
@@ -28,7 +34,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
 	try {
 		const data = req.body;
-		const auto = await service.create(data);
+		const auto = await serviceAuto.create(data);
 		res.json(auto);
 	} catch (error) {
 		console.error(error);
@@ -40,7 +46,7 @@ router.patch("/:id", async (req, res, next) => {
 		let { id } = req.params;
 		id = parseInt(id);
 		const data = req.body;
-		const auto = await service.update(id, data);
+		const auto = await serviceAuto.update(id, data);
 		res.json(auto);
 	} catch (error) {
 		console.error(error);
@@ -51,7 +57,7 @@ router.delete("/:id", async (req, res, next) => {
 	try {
 		let { id } = req.params;
 		id = parseInt(id);
-		const auto = await service.delete(id);
+		const auto = await serviceAuto.delete(id);
 		res.json(auto);
 	} catch (error) {
 		console.error(error);

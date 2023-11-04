@@ -1,0 +1,112 @@
+extends ./layout/header.pug
+block content
+  // Seccion Hero
+  section.hero.align-items-stretch
+    .hero-principal.d-flex.flex-column.justify-content-center.align-items-center.p-1
+      img.hero-imagen-desarrollador.rounded-circle(src='./imagenes/inicio.jpeg')
+      h1 Hola, somo enchulauto
+      h2  Tu seguridad es nuestra prioridad
+      // Animación con JavaScript
+    .hero-inferior.pb-5
+      img.hero-inferior-imagen.img-fluid(src='./imagenes/fotos.jpeg' width='450')
+  // Sobre mi
+  section#sobre-mi.sobre-mi.seccion-oscura
+    .contenedor
+      h2.seccion-titulo Conoce nuestra empresa...
+      p.seccion-texto
+        | Hola!! En esta empresa lo que buscamos es hacer una aplicaci&oacute;n web para administrar el
+        | mantenimiento de autos de las empresas que los adquieren para su campo de trabajo, para prevenir accidentes
+        | en&nbsp;alg&uacute;n&nbsp;futuro.
+  // Experiencia
+  section.experiencia.seccion-clara
+    .container.text-center
+      .row
+        // objetivo
+        .columna.col-12.col-md-4
+          i.bi.bi-laptop
+          p.experiencia-titulo objetivo
+          p
+            | Nuestro objetivo es lanzar una plataforma digital que agilice la gesti&oacute;n de las autopartes de autom&oacute;viles
+            | en una flotilla, una plataforma que sea amigable con el usuario para evitar trabajos manuales&nbsp;o&nbsp;de&nbsp;papeleo.
+          .badges-contenedor
+            span.badge.text-bg-dark plataforma
+        // Vision
+        .columna.col-12.col-md-4
+          i.bi.bi-laptop
+          p.experiencia-titulo Vision
+          p
+            | Nuestra visi&oacute;n es convertirnos en la plataforma l&iacute;der a nivel global en la administraci&oacute;n de autopartes y
+            | refacciones para empresas de autom&oacute;viles. Queremos ser reconocidos como un socio indispensable en la gesti&oacute;n
+            | de flotas, brindando soluciones tecnol&oacute;gicas de vanguardia que transforman la industria automotriz.
+          .badges-contenedor
+            span.badge.text-bg-dark Plataforma lider
+            span.badge.text-bg-dark Solucion tecnologica
+        // Mision
+        .columna.col-12.col-md-4
+          i.bi.bi-laptop
+          p.experiencia-titulo Mision
+          p
+            | Nuestra misi&oacute;n es revolucionar la forma en que las empresas de autom&oacute;viles gestionan y mantienen sus flotas
+            | al proporcionar una plataforma digital innovadora y eficiente para la administraci&oacute;n de autopartes y
+            | refacciones.
+          .badges-contenedor
+            span.badge.text-bg-dark eficiencia
+            span.badge.text-bg-dark innovadora
+            span.badge.text-bg-dark administrar
+  // imagenes
+  section#testimonios.testimonios.seccion-clara
+    h2.seccion-titulo trabajo
+    h3.seccion-descripcion Nuesto trabajo es lo mas importante para nosotros 
+    // Carrusel
+    #testimonios-carrusel.carousel.carousel-dark.slide(data-bs-ride='carousel')
+      .carousel-inner
+        .carousel-item.active
+          .container
+            img.testimonio-imagen.rounded-circle(src='imagenes/carrusel.jpeg' alt='Foto de say')
+            p.testimonio-texto
+            .testimonio-info
+              p.Persona.a.llegada
+              p.A.que.se.dedica
+        .carousel-item
+          .container
+            img.testimonio-imagen.rounded-circle(src='imagenes/Carrusel2.jpeg' alt='Foto de jaime')
+            p.testimonio-texto
+            .testimonio-info
+              p.Persona.a.llegada  
+              p.A.que.se.dedica
+      button.carousel-control-prev(type='button' data-bs-target='#testimonios-carrusel' data-bs-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.visually-hidden Anterior
+      button.carousel-control-next(type='button' data-bs-target='#testimonios-carrusel' data-bs-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.visually-hidden Siguiente
+  // Contacto
+  section#contacto.contacto.seccion-oscura
+    .container
+      .container.text-center.rectangulo.d-flex.justify-content-evenly
+        .row
+          .col-12.col-md-4.seccion-titulo
+            | &iexcl;Hablemos!
+          .col-12.col-md-4.descripcion
+            | Cont&aacute;ctanos para resolver cualquier duda y har&eacute;mos que tu visi&oacute;n se vuelva realidad.
+          .col-12.col-md-4
+            a(href='mail:montsegv1125@gmail.com')
+              button(type='button')
+                | Contacto
+                i.bi.bi-envelope-check-fill
+  // Pie de pagina (footer)
+  footer.seccion-oscura.d-flex.flex-column.align-items-center.justify-content-center
+    img.footer-logo(src='imagenes/icono-blanco.svg' alt='Logo del portafolio')
+    p.footer-texto.text-center
+      | En nuestras platarformas 
+      br
+      |  que nos puedes encontrar
+    .iconos-redes-sociales.d-flex.flex-wrap.align-items-center.justify-content-center
+      a(href='https://www.instagram.com/montse.___/' target='_blank' rel='noopener noreferrer')
+        i.bi.bi-instagram
+      a(href='mailto:enchulauto@gmail.com' target='_blank' rel='noopener noreferrer')
+        i.bi.bi-envelope
+    .derechos-de-autor Creado por enchulauto (2023) &copy;
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3' crossorigin='anonymous')
+  script(src='https://unpkg.com/typewriter-effect@latest/dist/core.js')
+  script(href='js/main.js')
