@@ -25,7 +25,10 @@ body
           img(src='../imagenes/auto.png' width='240' alt='Logo de la página web')
         ul.navbar-nav.d-flex.justify-content-center.align-items-center
           li.nav-item
-            a.nav-link.active(aria-current='page' href='/login') Iniciar sesi&oacute;n
+            if (sesion)
+               a.nav-link.active(aria-current='page' href='/logout') Cerrar Sesion
+            else
+              a.nav-link.active(aria-current='page' href='/login') Iniciar sesi&oacute;n
           li.nav-item
-            a.nav-link(href='/servicios') Servicios
+            a.nav-link(href='/autos') Autos
   block content

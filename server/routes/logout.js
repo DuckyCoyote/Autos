@@ -3,8 +3,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   try {
-    const sesion = req.session.sesion;
-    res.render("index", { sesion });
+    req.session.sesion = false;
+    req.session.destroy;
+    res.redirect("/");
   } catch (error) {
     console.error(error);
   }

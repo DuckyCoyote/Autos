@@ -2,13 +2,37 @@ extends ./layout/header.pug
 block content
   .container
     h2 Formulario de Registro
-    form(action='#' method='post')
-      label(for='id') ID:
-      input#id(type='text' name='id' required='')
-      label(for='nombre') Nombre:
-      input#nombre(type='text' name='nombre' required='')
-      label(for='apellido') Apellido:
-      input#apellido(type='text' name='apellido' required='')
-      label(for='correo') Correo Electr&oacute;nico:
-      input#correo(type='email' name='correo' required='')
-      input(type='submit' value='Registrar')
+    form.form-login
+      label.form-label(for="correo") Correo Electr&oacute;nico:
+      input#correo.form-control(type="email" name="email" required)
+      label.form-label(for="password") Password
+      input#password.form-control(type="password" name="password" required)
+      br
+      input(type='submit' value='Entrar')
+    script.
+      const formLogin = document.querySelector(".form-login");
+      document.addEventListener("DOMContentLoaded", () => {
+      formLogin.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formDataLogin = new FormData(formLogin);
+        const dataLogin = Object.fromEntries(formDataLogin);
+        await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataLogin),
+        }).then((response) => {
+            console.log(response)
+            if(response.status === 200) {
+              window.location.href = '/autos';
+            }else if (response.status != 200)
+              console.error({ message: 'Invalid credentials' });
+            })
+          .catch((error) => {
+            console.error(error);
+          });
+      formLogin.reset();
+        });
+      });
+

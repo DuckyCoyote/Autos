@@ -1,27 +1,29 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const AutoService = require('../services/auto.service.js');
-const ServicioService = require('../services/servicio.service.js');
+const AutoService = require("../services/auto.service.js");
+const ServicioService = require("../services/servicio.service.js");
 
 const serviceService = new ServicioService();
 
 const serviceAuto = new AutoService();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
+    const sesion = req.session.sesion;
     const services = await serviceService.findAll();
     const autos = await serviceAuto.findAll();
-    res.render('autos', {
+    res.render("autos", {
       autos,
       services,
+      sesion,
     });
   } catch (error) {
     console.log(error);
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const id = parseInt(req.params.id);
     const auto = await serviceAuto.findOne(id);
@@ -31,7 +33,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const data = req.body;
     const auto = await serviceAuto.create(data);
@@ -41,7 +43,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.patch('/:id', async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
   try {
     let { id } = req.params;
     id = parseInt(id);
@@ -53,7 +55,7 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     let { id } = req.params;
     id = parseInt(id);

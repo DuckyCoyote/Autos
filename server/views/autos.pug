@@ -40,6 +40,7 @@ block content
       label(for='descripcion') Descripcion
       input#marca(type='text' name='descripcion')
       br
+      label Auto
       select.form-select(aria-label="Seleccione un Auto" name="idAuto")
         each auto in autos
           option(value=`${auto.id}`) #{auto.placas}

@@ -14,7 +14,7 @@ class ServicioService {
     });
 		return servicio;
 	}
-
+	
 	async findOne(id) {
 		const servicio = await models.Servicio.findByPk(id);
 		return servicio;
